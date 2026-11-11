@@ -1,0 +1,80 @@
+/* Popup del formulario de registro (<dialog> nativo). */
+
+.lead-popup {
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: min(30rem, calc(100vw - 1.5rem));
+  max-width: none;
+  max-height: calc(100dvh - 1.5rem);
+  overflow: visible;
+}
+
+.lead-popup::backdrop {
+  background: rgba(8, 8, 13, 0.72);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.lead-popup-card {
+  position: relative;
+  max-height: calc(100dvh - 1.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  padding: 1.5rem 1.25rem 1.25rem;
+  box-shadow:
+    0 30px 80px -20px rgba(23, 100, 255, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 400px) {
+  .lead-popup-card {
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .lead-popup-card {
+    padding: 2.25rem 2.25rem 2rem;
+  }
+}
+
+/* Sin scroll de la página de fondo mientras el popup está abierto */
+html:has(.lead-popup[open]) {
+  overflow: hidden;
+}
+
+/* Entrada suave */
+.lead-popup[open] .lead-popup-card {
+  animation: lead-popup-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.lead-popup[open]::backdrop {
+  animation: lead-popup-fade 0.32s ease-out;
+}
+
+@keyframes lead-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lead-popup-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-popup[open] .lead-popup-card,
+  .lead-popup[open]::backdrop {
+    animation: none;
+  }
+}

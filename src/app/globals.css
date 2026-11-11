@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Escritorio/laptop de poca altura (p. ej. 1366×768, 1440×900 con la barra del navegador):
+ * compacta el Hero para que el formulario y su botón entren en la primera pantalla. */
+@custom-variant short (@media (min-width: 64rem) and (max-height: 52rem));
+/* Aún más baja (p. ej. 1366×768 con barras del navegador ≈ 650px útiles). */
+@custom-variant tiny (@media (min-width: 64rem) and (max-height: 44rem));
+
+@theme {
+  --color-night: #08080d;
+  --color-electric: #1764ff;
+  --color-electric-bright: #1685ff;
+  --color-muted: #b8bec9;
+  --color-line: #252b3a;
+
+  /* Formulario (superficie clara) */
+  --color-ink: #0b0d14;
+  --color-ink-soft: #545b69;
+  --color-field: #d9dde5;
+  --color-surface: #f4f6f9;
+  --color-placeholder: #9aa1ad;
+  --color-danger: #dc2626;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-night);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-night);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(23, 100, 255, 0.45);
+  color: #ffffff;
+}
+
+/* Fotografía: se funde suavemente con el fondo en la base */
+.expert-photo {
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 97%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 97%);
+}
+
+/* Tarjeta del formulario */
+.form-card {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 30px 80px -24px rgba(23, 100, 255, 0.35),
+    0 12px 32px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Botón principal */
+.btn-primary {
+  box-shadow:
+    0 10px 24px -10px rgba(23, 100, 255, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    filter 250ms ease;
+}
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow:
+    0 16px 32px -12px rgba(22, 133, 255, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.btn-primary:not(:disabled):active {
+  transform: translateY(0);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-electric-bright);
+  outline-offset: 3px;
+}
+
+/* Entradas progresivas */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  animation: reveal-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-1 { animation-delay: 40ms; }
+.reveal-2 { animation-delay: 120ms; }
+.reveal-3 { animation-delay: 220ms; }
+.reveal-4 { animation-delay: 320ms; animation-duration: 900ms; }
+.reveal-5 { animation-delay: 440ms; }
+.reveal-6 { animation-delay: 560ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .btn-primary:not(:disabled):hover {
+    transform: none;
+  }
+}
