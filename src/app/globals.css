@@ -48,11 +48,36 @@ body {
 }
 
 /* Tarjeta del formulario */
+/* Tarjeta del formulario (Hero): resplandor azul eléctrico ambiental en varias capas */
 .form-card {
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 30px 80px -24px rgba(23, 100, 255, 0.35),
+    0 0 0 1px rgba(23, 100, 255, 0.38),
+    0 0 18px -2px rgba(23, 100, 255, 0.35),
+    0 0 56px -8px rgba(23, 100, 255, 0.4),
+    0 30px 90px -24px rgba(23, 100, 255, 0.5),
     0 12px 32px -12px rgba(0, 0, 0, 0.6);
+}
+/* Halo exterior que "respira" muy lentamente (8 s por ciclo, sin pulsos bruscos) */
+.form-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 40px 2px rgba(23, 100, 255, 0.32),
+    0 0 110px 10px rgba(23, 100, 255, 0.16);
+  opacity: 0.55;
+  animation: form-card-glow 8s ease-in-out infinite alternate;
+}
+@keyframes form-card-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Botón principal */
@@ -61,19 +86,51 @@ body {
     0 10px 24px -10px rgba(23, 100, 255, 0.75),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition:
-    transform 250ms ease,
-    box-shadow 250ms ease,
-    filter 250ms ease;
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms ease,
+    filter 300ms ease;
+}
+/* Brillo azul eléctrico que atraviesa el botón: barrido de ~2,1 s y pausa de ~4,4 s */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: -1; /* por encima del fondo del botón y por debajo del texto (botón con isolate) */
+  width: 42%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(22, 133, 255, 0) 0%,
+    rgba(120, 185, 255, 0.28) 35%,
+    rgba(214, 233, 255, 0.55) 50%,
+    rgba(120, 185, 255, 0.28) 65%,
+    rgba(22, 133, 255, 0) 100%
+  );
+  transform: translateX(-120%) skewX(-18deg);
+  animation: btn-shine 6.5s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
+}
+@keyframes btn-shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  32%,
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+.btn-primary:disabled::after {
+  animation: none;
+  opacity: 0;
 }
 .btn-primary:not(:disabled):hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
+  transform: scale(1.02);
+  filter: brightness(1.08);
   box-shadow:
-    0 16px 32px -12px rgba(22, 133, 255, 0.85),
+    0 16px 34px -12px rgba(22, 133, 255, 0.85),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 .btn-primary:not(:disabled):active {
-  transform: translateY(0);
+  transform: scale(1);
 }
 .btn-primary:focus-visible {
   outline: 2px solid var(--color-electric-bright);

@@ -60,7 +60,7 @@ export const landingConfig = {
 
   hero: {
     headline:
-      "No necesitas ser millonario para comenzar a construir riqueza inmobiliaria.",
+      "No necesitas ser millonario para empezar en bienes raíces.",
     headlineAccent: "Necesitas una estrategia.",
     subheadline:
       "En tres clases gratuitas en vivo te voy a enseñar a preparar tu capital, detectar oportunidades y construir patrimonio en bienes raíces, incluso con poco dinero.",
