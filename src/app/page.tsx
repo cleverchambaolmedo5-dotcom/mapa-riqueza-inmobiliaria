@@ -1,6 +1,5 @@
 import { CountdownBar } from "@/components/countdown/CountdownBar";
 import { Hero } from "@/components/hero/Hero";
-import { LeadPopup } from "@/components/hero/LeadPopup";
 import { Footer } from "@/components/layout/Footer";
 import { AuthoritySection } from "@/components/sections/AuthoritySection";
 import { LearningSection } from "@/components/sections/LearningSection";
@@ -17,7 +16,6 @@ export default function Home() {
         <TestimonialsSection />
       </main>
       <Footer />
-      <LeadPopup />
     </>
   );
 }

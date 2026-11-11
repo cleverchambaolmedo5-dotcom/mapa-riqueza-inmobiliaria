@@ -13,12 +13,12 @@ export function Input({ id, label, error, leading, className = "", ...props }: I
   const hasError = Boolean(error);
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-[0.8125rem] font-semibold text-ink">
         {label}
       </label>
       <div
-        className={`field-shell flex h-12 items-stretch tiny:h-11 overflow-hidden rounded-xl border bg-white transition-[border-color,box-shadow] duration-200 ${
+        className={`field-shell flex h-[3.25rem] items-stretch overflow-hidden rounded-xl border bg-white transition-[border-color,box-shadow] duration-200 ${
           hasError
             ? "border-danger shadow-[0_0_0_3px_rgba(220,38,38,0.10)]"
             : "border-field focus-within:border-electric focus-within:shadow-[0_0_0_3px_rgba(23,100,255,0.14)]"
@@ -36,9 +36,9 @@ export function Input({ id, label, error, leading, className = "", ...props }: I
       <p
         id={errorId}
         role={hasError ? "alert" : undefined}
-        className={`min-h-4 text-[0.8125rem] leading-4 text-danger short:min-h-0 ${hasError ? "" : "invisible"}`}
+        className={`min-h-[1.125rem] text-[0.8125rem] leading-[1.125rem] text-danger ${hasError ? "" : "invisible"}`}
       >
-        {error}
+        {error ?? " "}
       </p>
     </div>
   );

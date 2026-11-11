@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-/* Escritorio/laptop de poca altura (p. ej. 1366×768, 1440×900 con la barra del navegador):
- * compacta el Hero para que el formulario y su botón entren en la primera pantalla. */
-@custom-variant short (@media (min-width: 64rem) and (max-height: 52rem));
-/* Aún más baja (p. ej. 1366×768 con barras del navegador ≈ 650px útiles). */
-@custom-variant tiny (@media (min-width: 64rem) and (max-height: 44rem));
-
 @theme {
   --color-night: #08080d;
   --color-electric: #1764ff;

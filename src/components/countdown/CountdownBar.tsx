@@ -51,7 +51,7 @@ export function CountdownBar() {
 
   return (
     <div className="w-full bg-electric text-white">
-      <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center justify-center gap-2 px-4 py-2.5 sm:px-8 lg:flex-row lg:gap-6 lg:py-2 short:py-1.5">
+      <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center justify-center gap-3 px-4 py-3.5 sm:px-8 lg:flex-row lg:gap-8 lg:py-3">
         {ended ? (
           <p
             role="status"
@@ -64,16 +64,16 @@ export function CountdownBar() {
             <p className="text-center text-xs font-bold uppercase tracking-[0.2em] sm:text-sm">
               {countdown.title}
             </p>
-            <ul role="timer" aria-label={countdown.title} className="flex items-stretch gap-2 sm:gap-2.5">
+            <ul role="timer" aria-label={countdown.title} className="flex items-stretch gap-2 sm:gap-3">
               {units.map(({ key, label }) => (
                 <li
                   key={key}
-                  className="flex w-[3.875rem] flex-col items-center justify-center rounded-lg bg-white px-1 py-1 sm:w-[4.75rem] sm:py-1.5"
+                  className="flex w-[4.25rem] flex-col items-center justify-center rounded-lg bg-white px-1 py-1.5 sm:w-[5rem] sm:py-2"
                 >
-                  <span className="text-xl font-extrabold leading-none tabular-nums text-[#123B9A] sm:text-2xl">
+                  <span className="text-2xl font-extrabold leading-none tabular-nums text-[#123B9A] sm:text-[1.75rem]">
                     {timeLeft ? pad(timeLeft[key]) : "--"}
                   </span>
-                  <span className="mt-0.5 text-[0.5625rem] font-semibold uppercase tracking-[0.08em] text-[#123B9A]/70 sm:text-[0.625rem] sm:tracking-[0.12em]">
+                  <span className="mt-1 text-[0.5625rem] font-semibold uppercase tracking-[0.08em] text-[#123B9A]/70 sm:text-[0.625rem] sm:tracking-[0.12em]">
                     {label}
                   </span>
                 </li>

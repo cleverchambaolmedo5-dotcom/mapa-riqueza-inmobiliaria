@@ -29,8 +29,8 @@ export function ExpertProfile() {
             height={expert.photo.height}
             alt={expert.photo.alt}
             preload
-            sizes="(min-width: 1280px) 336px, (min-width: 1024px) 320px, (min-width: 640px) 352px, 288px"
-            className="expert-photo relative h-auto w-[18rem] object-contain sm:w-[22rem] lg:w-[20rem] xl:w-[21rem] short:w-[15rem] short:xl:w-[15.5rem] tiny:w-[14rem] tiny:xl:w-[14rem]"
+            sizes="(min-width: 1280px) 384px, (min-width: 640px) 368px, 304px"
+            className="expert-photo relative h-auto w-[19rem] object-contain sm:w-[22rem] lg:w-[23rem] xl:w-[24rem]"
           />
         ) : (
           <PhotoPlaceholder />
@@ -45,11 +45,11 @@ export function ExpertProfile() {
           {expert.role}
         </p>
 
-        <dl className="mt-5 grid w-full max-w-[30rem] grid-cols-3 border-y border-line short:mt-4">
+        <dl className="mt-6 grid w-full max-w-[30rem] grid-cols-3 border-y border-line">
           {expert.stats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`flex flex-col items-center gap-1 px-2 py-4 lg:py-3.5 short:py-3 ${index > 0 ? "border-l border-line" : ""}`}
+              className={`flex flex-col items-center gap-1 px-2 py-4 ${index > 0 ? "border-l border-line" : ""}`}
             >
               <dt className="sr-only">{stat.label}</dt>
               <dd className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">{stat.value}</dd>

@@ -30,17 +30,7 @@ const communityUrl = (() => {
   }
 })();
 
-/** Marca en el navegador de que la persona ya se registró (para no mostrarle el popup). */
-export const REGISTERED_STORAGE_KEY = "lead-registered";
-
-type LeadFormProps = {
-  /** Prefijo de los id HTML: debe ser distinto en cada formulario de la página. */
-  idPrefix?: string;
-  /** `card`: formulario del Hero (ancla #registro). `modal`: dentro del popup. */
-  variant?: "card" | "modal";
-};
-
-export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps) {
+export function LeadForm() {
   const [values, setValues] = useState<LeadFormValues>({
     fullName: "",
     dialCode: `${defaultCountry.iso}|${defaultCountry.dialCode}`,
@@ -93,7 +83,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
 
     const firstInvalid = (["fullName", "phone", "email"] as Field[]).find((f) => validation[f]);
     if (firstInvalid) {
-      document.getElementById(`${idPrefix}-${firstInvalid}`)?.focus();
+      document.getElementById(`lead-${firstInvalid}`)?.focus();
       return;
     }
 
@@ -112,11 +102,6 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
       setValues((current) => ({ ...current, fullName: "", phone: "", email: "" }));
       setTouched({});
       setErrors({});
-      try {
-        window.localStorage.setItem(REGISTERED_STORAGE_KEY, "1");
-      } catch {
-        // Almacenamiento bloqueado: solo implica que el popup podría volver a mostrarse.
-      }
       // Redirección en la misma pestaña: no la bloquean los navegadores (una ventana nueva sí).
       if (communityUrl) window.location.assign(communityUrl);
     }
@@ -124,11 +109,11 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
 
   const countrySelect = (
     <div className="relative flex shrink-0 items-center border-r border-field bg-surface">
-      <label htmlFor={`${idPrefix}-dialCode`} className="sr-only">
+      <label htmlFor="lead-dialCode" className="sr-only">
         Código de país
       </label>
       <select
-        id={`${idPrefix}-dialCode`}
+        id="lead-dialCode"
         name="dialCode"
         value={values.dialCode}
         onChange={handleChange}
@@ -155,27 +140,17 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
   );
 
   return (
-    <div
-      id={variant === "card" ? landingConfig.form.anchorId : undefined}
-      className={
-        variant === "card"
-          ? "reveal reveal-5 form-card relative w-full rounded-[1.25rem] bg-white p-5 min-[400px]:p-6 sm:p-8 lg:p-7 short:px-7 short:py-6 tiny:py-5"
-          : "relative w-full"
-      }
-    >
-      <div className={variant === "card" ? "mb-5 short:mb-4 tiny:mb-3" : "mb-5"}>
-        <h2
-          id={`${idPrefix}-title`}
-          className="text-[1.375rem] font-extrabold uppercase leading-tight tracking-[-0.01em] text-ink sm:text-[1.625rem] tiny:text-[1.375rem]"
-        >
+    <div id={landingConfig.form.anchorId} className="reveal reveal-5 form-card relative w-full rounded-[1.25rem] bg-white p-5 min-[400px]:p-6 sm:p-9">
+      <div className="mb-7">
+        <h2 className="text-[1.375rem] font-extrabold uppercase leading-tight tracking-[-0.01em] text-ink sm:text-[1.625rem]">
           {form.title}
         </h2>
-        <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-soft short:text-sm">{form.description}</p>
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-soft">{form.description}</p>
       </div>
 
-      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-1" aria-describedby={`${idPrefix}-status`}>
+      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-1.5" aria-describedby="lead-status">
         <Input
-          id={`${idPrefix}-fullName`}
+          id="lead-fullName"
           name="fullName"
           label="Nombre completo"
           placeholder="Ej. María Fernanda López"
@@ -187,7 +162,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
           error={errors.fullName}
         />
         <Input
-          id={`${idPrefix}-phone`}
+          id="lead-phone"
           name="phone"
           type="tel"
           inputMode="tel"
@@ -202,7 +177,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
           leading={countrySelect}
         />
         <Input
-          id={`${idPrefix}-email`}
+          id="lead-email"
           name="email"
           type="email"
           inputMode="email"
@@ -220,8 +195,8 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
 
         {/* Campo trampa anti-spam: invisible para personas, los bots lo rellenan. */}
         <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
-          <label htmlFor={`${idPrefix}-website`}>No completes este campo</label>
-          <input id={`${idPrefix}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+          <label htmlFor="lead-website">No completes este campo</label>
+          <input id="lead-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
         </div>
 
         <Button type="submit" fullWidth disabled={status === "submitting"} className="mt-2">
@@ -231,7 +206,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
           </span>
         </Button>
 
-        <p className="mt-2.5 text-center text-xs leading-relaxed text-ink-soft">
+        <p className="mt-3 text-center text-xs leading-relaxed text-ink-soft">
           {landingConfig.privacy.formNotice.before}{" "}
           <a
             href={landingConfig.privacy.href}
@@ -244,7 +219,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
           {landingConfig.privacy.formNotice.after}
         </p>
 
-        <div id={`${idPrefix}-status`} aria-live="polite" className="min-h-0">
+        <div id="lead-status" aria-live="polite" className="min-h-0">
           {status === "sent" && (
             <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3.5 py-2.5 text-[0.8125rem] leading-snug text-emerald-900">
               <strong>{landingConfig.leadCapture.successTitle}</strong>{" "}

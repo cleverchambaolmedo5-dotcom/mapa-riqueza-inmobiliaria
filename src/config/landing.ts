@@ -291,14 +291,6 @@ export const landingConfig = {
     format: "3 clases gratuitas en vivo",
   },
 
-  /** Popup con el formulario de registro al entrar en la landing. */
-  popup: {
-    enabled: true,
-    /** Milisegundos tras la carga antes de mostrarlo. */
-    delayMs: 2000,
-    eyebrow: "Gratis · 14, 15 y 16 de diciembre · En vivo",
-  },
-
   /**
    * Captación de registros: el formulario envía a la Route Handler propia
    * (`src/app/api/leads/route.ts`), que guarda cada registro en Google Sheets.

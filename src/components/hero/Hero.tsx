@@ -16,10 +16,10 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-electric-bright/50 to-transparent"
       />
 
-      <div className="mx-auto w-full max-w-[78rem] px-4 pb-14 pt-9 sm:px-8 sm:pt-12 lg:px-10 lg:pb-16 lg:pt-10 short:pt-5 tiny:pt-3">
+      <div className="mx-auto w-full max-w-[78rem] px-4 pb-14 pt-12 sm:px-8 sm:pt-16 lg:px-10 lg:pb-16 lg:pt-16">
         <HeroHeading />
 
-        <div className="mt-8 grid grid-cols-[minmax(0,1fr)] items-center gap-10 sm:mt-10 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20 short:mt-4 tiny:mt-3">
+        <div className="mt-10 grid grid-cols-[minmax(0,1fr)] items-center gap-10 sm:mt-12 lg:mt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20">
           <ExpertProfile />
           <div className="mx-auto w-full max-w-[32rem] lg:max-w-[30rem] lg:justify-self-start xl:max-w-[31rem]">
             <LeadForm />

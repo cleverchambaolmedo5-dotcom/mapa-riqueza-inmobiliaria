@@ -143,8 +143,7 @@ export default function PrivacyPolicyPage() {
               <p>
                 <strong>No vendemos ni alquilamos tus datos personales.</strong> Solo los compartimos con proveedores
                 tecnológicos que nos ayudan a prestar el servicio y que actúan siguiendo nuestras instrucciones, como
-                Google (almacenamiento de los registros en Google Sheets), Meta (medición de visitas y anuncios mediante el
-                Meta Pixel), el proveedor de alojamiento de esta página y
+                Google (almacenamiento de los registros en Google Sheets), el proveedor de alojamiento de esta página y
                 las herramientas que usamos para comunicarnos contigo por WhatsApp y correo electrónico.
               </p>
               <p>También podremos comunicarlos a autoridades competentes cuando una norma legal lo exija.</p>
@@ -208,16 +207,9 @@ export default function PrivacyPolicyPage() {
 
             <Section id="cookies" title="12. Cookies y almacenamiento en el navegador">
               <p>
-                Esta página utiliza el <strong>Meta Pixel</strong>, una herramienta de Meta Platforms (Facebook e
-                Instagram) que usa cookies y tecnologías similares para registrar las visitas a la página y medir la
-                efectividad de nuestros anuncios. Meta trata esa información conforme a su propia política de
-                privacidad. Puedes gestionar los anuncios que ves desde la configuración de tu cuenta de Meta o
-                bloquear las cookies de terceros en tu navegador.
-              </p>
-              <p>
-                Además, guardamos en tu navegador los parámetros de la campaña por la que llegaste (se borran al cerrar
-                la pestaña) y una marca para no volver a mostrarte el formulario emergente si ya te registraste o lo
-                cerraste.
+                Esta página no utiliza cookies publicitarias ni de analítica. Solo guarda temporalmente en tu navegador
+                (almacenamiento de sesión) los parámetros de la campaña por la que llegaste, para asociarlos a tu
+                registro. Esa información se borra al cerrar la pestaña.
               </p>
             </Section>
 
