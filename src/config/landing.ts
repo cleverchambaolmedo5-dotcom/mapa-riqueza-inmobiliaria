@@ -295,7 +295,7 @@ export const landingConfig = {
   popup: {
     enabled: true,
     /** Milisegundos tras la carga antes de mostrarlo. */
-    delayMs: 2000,
+    delayMs: 3000,
     eyebrow: "Gratis · 14, 15 y 16 de diciembre · En vivo",
   },
 

@@ -29,6 +29,14 @@ html {
   color-scheme: dark;
 }
 
+/* Nunca hay desplazamiento horizontal del documento (en móvil, durante la carga,
+ * Chrome podía permitir unos píxeles de scroll lateral). `clip` no crea un
+ * contenedor de scroll, así que no afecta al scroll vertical ni a position: sticky. */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-night);
   color: #ffffff;
