@@ -30,7 +30,7 @@ export function ExpertProfile() {
             alt={expert.photo.alt}
             preload
             sizes="(min-width: 1280px) 336px, (min-width: 1024px) 320px, (min-width: 640px) 352px, 288px"
-            className="expert-photo relative h-auto w-[18rem] object-contain sm:w-[22rem] lg:w-[20rem] xl:w-[21rem] short:w-[15rem] short:xl:w-[15.5rem] tiny:w-[14rem] tiny:xl:w-[14rem]"
+            className="expert-photo relative h-auto w-[18rem] object-contain sm:w-[22rem] lg:w-[20rem] xl:w-[21rem] short:w-[15rem] short:xl:w-[15.5rem] tiny:w-[13.5rem] tiny:xl:w-[13.5rem]"
           />
         ) : (
           <PhotoPlaceholder />

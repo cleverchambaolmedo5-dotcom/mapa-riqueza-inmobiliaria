@@ -159,7 +159,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
       id={variant === "card" ? landingConfig.form.anchorId : undefined}
       className={
         variant === "card"
-          ? "reveal reveal-5 form-card relative w-full rounded-[1.25rem] bg-white p-5 min-[400px]:p-6 sm:p-8 lg:p-7 short:px-7 short:py-6 tiny:py-5"
+          ? "reveal reveal-5 form-card relative w-full rounded-[1.25rem] bg-white p-5 min-[400px]:p-6 sm:p-8 lg:p-7 short:px-7 short:py-6 tiny:py-4"
           : "relative w-full"
       }
     >
@@ -231,7 +231,7 @@ export function LeadForm({ idPrefix = "lead", variant = "card" }: LeadFormProps)
           </span>
         </Button>
 
-        <p className="mt-2.5 text-center text-xs leading-relaxed text-ink-soft">
+        <p className="mt-2.5 text-center text-xs leading-relaxed text-ink-soft tiny:mt-2">
           {landingConfig.privacy.formNotice.before}{" "}
           <a
             href={landingConfig.privacy.href}
