@@ -88,8 +88,13 @@ body {
   }
 }
 
-/* Botón principal */
+/* Botón principal (formulario y CTA de la sección de autoridad).
+ * position/isolation/overflow aquí y no solo en clases: el brillo (::after) siempre
+ * queda recortado dentro del botón, sin asomar fuera ni generar scroll lateral. */
 .btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   box-shadow:
     0 10px 24px -10px rgba(23, 100, 255, 0.75),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
@@ -114,15 +119,25 @@ body {
     rgba(120, 185, 255, 0.28) 65%,
     rgba(22, 133, 255, 0) 100%
   );
+  opacity: 0;
   transform: translateX(-120%) skewX(-18deg);
   animation: btn-shine 6.5s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
 }
+/* Entra con fundido, cruza el botón y se desvanece del todo: en la pausa no se ve nada */
 @keyframes btn-shine {
   0% {
+    opacity: 0;
     transform: translateX(-120%) skewX(-18deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  26% {
+    opacity: 1;
   }
   32%,
   100% {
+    opacity: 0;
     transform: translateX(260%) skewX(-18deg);
   }
 }
